@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:user="clr-namespace:KalkulatorKaloriiXamarin.ViewModels.User" x:DataType="user:NewUserViewModel"
+             x:Class="KalkulatorKaloriiXamarin.Views.User.NewUserPage"
+             Title="Nowy użytkownik">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="Nazwa" Text="{Binding NewUsername}" />
+            <Entry Placeholder="Wiek" Text="{Binding NewAge}" />
+            <Picker SelectedItem="{Binding NewSex}">
+                <Picker.Items>
+                    <x:String>Męzczyzna</x:String>
+                    <x:String>Kobieta</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry Placeholder="Wzrost" Text="{Binding NewHeight}" />
+            <Entry Placeholder="Waga obecna" Text="{Binding NewWeight}" />
+            <Entry Placeholder="Waga docelowa" Text="{Binding NewTargetWeight}" />
+            <Button Text="Zapisz" Command="{Binding SaveUser}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

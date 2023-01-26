@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:viewmodels="clr-namespace:KalkulatorKaloriiXamarin.ViewModels" x:DataType="viewmodels:LoginViewModel"
+             mc:Ignorable="d"
+             x:Class="KalkulatorKaloriiXamarin.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20,10,20,10" VerticalOptions="Center">
+            <Image Source="logo_dark" WidthRequest="200" />
+            <Picker x:Name="UserList" Title="Użytkownik" ItemsSource="{Binding Users}"  ItemDisplayBinding="{Binding Username}" SelectedItem="{Binding SelectedUser}"/>
+            <Button VerticalOptions="Center" Text="Nowy użytkownik" Command="{Binding NewUserCommand}"/>
+            <Button VerticalOptions="Center" Text="Edytuj użytkownika" Command="{Binding EditUserCommand}"/>
+            <Button VerticalOptions="Center" Text="Usuń użytkownika" Command="{Binding DeleteUserCommand}"/>
+            <Button VerticalOptions="Center" Text="Przejdź dalej" Command="{Binding LoginCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
