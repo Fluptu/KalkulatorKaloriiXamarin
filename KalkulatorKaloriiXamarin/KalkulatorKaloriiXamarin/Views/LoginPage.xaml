@@ -6,11 +6,12 @@
              xmlns:viewmodels="clr-namespace:KalkulatorKaloriiXamarin.ViewModels" x:DataType="viewmodels:LoginViewModel"
              mc:Ignorable="d"
              x:Class="KalkulatorKaloriiXamarin.Views.LoginPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
              Shell.NavBarIsVisible="False">
 
     <ContentPage.Content>
         <StackLayout Padding="20,10,20,10" VerticalOptions="Center">
-            <Image Source="logo_dark" WidthRequest="200" />
+            <Image Source="logo_white" WidthRequest="200" Margin="0,10,0,30" />
             <Picker x:Name="UserList" Title="Użytkownik" ItemsSource="{Binding Users}"  ItemDisplayBinding="{Binding Username}" SelectedItem="{Binding SelectedUser}"/>
             <Button VerticalOptions="Center" Text="Nowy użytkownik" Command="{Binding NewUserCommand}"/>
             <Button VerticalOptions="Center" Text="Edytuj użytkownika" Command="{Binding EditUserCommand}"/>

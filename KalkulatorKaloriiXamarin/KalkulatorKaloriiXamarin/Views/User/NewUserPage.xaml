@@ -2,21 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:user="clr-namespace:KalkulatorKaloriiXamarin.ViewModels.User" x:DataType="user:NewUserViewModel"
              x:Class="KalkulatorKaloriiXamarin.Views.User.NewUserPage"
-             Title="Nowy użytkownik">
+             Title="Nowy użytkownik"
+             BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="20,10,20,10">
             <Entry Placeholder="Nazwa" Text="{Binding NewUsername}" />
-            <Entry Placeholder="Wiek" Text="{Binding NewAge}" />
+            <Entry Placeholder="Wiek" Keyboard="Numeric" Text="{Binding NewAge}" />
+            <Label Text="Płeć" />
             <Picker SelectedItem="{Binding NewSex}">
                 <Picker.Items>
                     <x:String>Męzczyzna</x:String>
                     <x:String>Kobieta</x:String>
                 </Picker.Items>
             </Picker>
-            <Entry Placeholder="Wzrost" Text="{Binding NewHeight}" />
-            <Entry Placeholder="Waga obecna" Text="{Binding NewWeight}" />
-            <Entry Placeholder="Waga docelowa" Text="{Binding NewTargetWeight}" />
-            <Button Text="Zapisz" Command="{Binding SaveUser}" />
+            <Entry Placeholder="Wzrost" Keyboard="Numeric" Text="{Binding NewHeight}" />
+            <Entry Placeholder="Waga obecna" Keyboard="Numeric" Text="{Binding NewWeight}" />
+            <Entry Placeholder="Waga docelowa" Keyboard="Numeric" Text="{Binding NewTargetWeight}" />
+            <Button Margin="0,50,0,0" Text="Zapisz" Command="{Binding SaveUser}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

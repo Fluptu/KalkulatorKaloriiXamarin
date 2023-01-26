@@ -38,9 +38,9 @@ namespace KalkulatorKaloriiXamarin.DB
             return conn.InsertAsync(h);
         }
 
-        public Task<List<UserHistory>> SelectHistoryForDate(int userId, DateTime d)
+        public Task<List<UserHistory>> SelectHistoryForDate(int userId,string d)
         {
-            return conn.Table<UserHistory>().Where(i => i.UserID == userId && i.Date == d.ToString()).ToListAsync();
+            return conn.Table<UserHistory>().Where(i => i.UserID == userId && i.Date==d).ToListAsync();
         }
 
         public Task<int> UpdateHistory(UserHistory h)

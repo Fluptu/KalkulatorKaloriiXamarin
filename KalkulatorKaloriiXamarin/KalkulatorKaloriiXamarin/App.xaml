@@ -7,15 +7,16 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="BackgroundColor">#272537</Color>
+            <Color x:Key="Primary">#272537</Color>
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor" Value="White" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
@@ -26,6 +27,19 @@
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="PlaceholderColor" Value="LightSlateGray" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White"></Setter>
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="TextColor" Value="White"></Setter>
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="White"></Setter>
             </Style>
         </ResourceDictionary>        
     </Application.Resources>

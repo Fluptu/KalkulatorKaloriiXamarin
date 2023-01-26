@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:KalkulatorKaloriiXamarin.ViewModels.History" 
+             xmlns:model="clr-namespace:KalkulatorKaloriiXamarin.Models"
+             x:Class="KalkulatorKaloriiXamarin.Views.History.ListHistoryPage"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <ContentPage.Content>
+        <StackLayout Padding="10,20,10,0">
+            <Button Text="Nowy wpis" Command="{Binding AddHistoryCommand}" />
+            <DatePicker Date="{Binding SelectedDate, Mode=TwoWay}">
+                <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+            </DatePicker>
+            <RefreshView x:DataType="local:ListHistoryViewModel" Command="{Binding LoadHistoriesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding UserHistories}"
+                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10" x:DataType="model:UserHistory">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding MealType}" 
+                                    LineBreakMode="NoWrap" 
+                                    FontSize="16" />
+                                    <Label Text=":      " 
+                                    LineBreakMode="NoWrap" 
+                                    FontSize="16" />
+                                    <Label Text="{Binding MealName}" 
+                                    LineBreakMode="NoWrap" 
+                                    FontSize="16" />
+                                </StackLayout>
+                                    
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        NumberOfTapsRequired="1"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:ListHistoryViewModel}}, Path=ItemTapped}"		
+                                        CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

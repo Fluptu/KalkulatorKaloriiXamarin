@@ -1,6 +1,9 @@
 ﻿<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:asdf.Views"
+       xmlns:local="clr-namespace:KalkulatorKaloriiXamarin.Views"
+       xmlns:local2="clr-namespace:KalkulatorKaloriiXamarin.Views.History"
+       xmlns:user="clr-namespace:KalkulatorKaloriiXamarin.Views.User"
+       Shell.TabBarIsVisible="True"
        Title="asdf"
        x:Class="KalkulatorKaloriiXamarin.AppShell">
 
@@ -19,13 +22,13 @@
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="#38354f"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="White"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
-
+            
             <!--
             Default Styles for all Flyout Items
             https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyoutitem-and-menuitem-style-classes
@@ -72,5 +75,45 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+
+<!--
+    <FlyoutItem>
+        <ShellContent ContentTemplate="{DataTemplate user:NewUserPage}"/>
+        <ShellContent Route="AnotherPage"
+                        FlyoutItemIsVisible="False"
+                        ContentTemplate="{DataTemplate local2:HistoryMainPage}"/>
+
+        <ShellContent Route="LoginPage"
+                        FlyoutItemIsVisible="False"
+                        ContentTemplate="{DataTemplate local:LoginPage}"/>
+    </FlyoutItem>
+ <TabBar Route="main">
+        <Tab Title="Historia">
+            <ShellContent ContentTemplate="{DataTemplate local2:HistoryMainPage}" />
+        </Tab>
+    </TabBar>
+
+    <FlyoutItem Route="ListHistoryPage" Title="lista">
+        <ShellContent ContentTemplate="{DataTemplate local2:ListHistoryPage}"/>
+    </FlyoutItem>
+    <MenuItem Text="Wyloguj sie"
+                Clicked="OnMenuItemClicked"/>
+-->
+
+    <ShellItem Route="Login" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+    </ShellItem>
+
+    <FlyoutItem Route="HistoryMainPage" Title="Strona Główna">
+        <ShellContent ContentTemplate="{DataTemplate local2:HistoryMainPage}"/>
+    </FlyoutItem>
+
+
+    <MenuItem Text="Wyloguj się" Clicked="OnMenuItemClicked">
+    </MenuItem>
+
+    <TabBar>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
 
 </Shell>

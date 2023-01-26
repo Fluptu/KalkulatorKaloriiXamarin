@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace KalkulatorKaloriiXamarin.Views.History
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HistoryMainPage : ContentPage
+    public partial class HistoryDetailPage : ContentPage
     {
-        public HistoryMainPage()
+        public HistoryDetailPage(Models.UserHistory u)
         {
             InitializeComponent();
-            this.BindingContext = new HistoryMainViewModel();
+            this.BindingContext = new HistoryDetailViewModel(u);
         }
     }
 }

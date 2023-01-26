@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:history="clr-namespace:KalkulatorKaloriiXamarin.ViewModels.History" x:DataType="history:HistoryDetailViewModel"
+             x:Class="KalkulatorKaloriiXamarin.Views.History.HistoryDetailPage"
+             BackgroundColor="{StaticResource BackgroundColor}">
+    <ContentPage.Content>
+        <StackLayout Padding="10,20,10,20">
+            <Label Text="Edycja pozycji" />
+            <DatePicker Date="{Binding Date, Mode=TwoWay}">
+                <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+            </DatePicker>
+            <Entry Placeholder="Posiłek" Text="{Binding MealName}" />
+            <Label Text="Typ posiłku" />
+            <Picker SelectedItem="{Binding MealType}">
+                <Picker.Items>
+                    <x:String>Śniadanie</x:String>
+                    <x:String>Lunch</x:String>
+                    <x:String>Obiad</x:String>
+                    <x:String>Podwieczorek</x:String>
+                    <x:String>Kolacja</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry Placeholder="Waga [g]" Keyboard="Numeric" Text="{Binding MealWeight}" />
+            <Entry Placeholder="Kaloryczność" Keyboard="Numeric" Text="{Binding MealKcal}" />
+            <Entry Placeholder="Wypita woda" Keyboard="Numeric" Text="{Binding WaterQty}" />
+            <Label Text="Aktywność" />
+            <Picker SelectedItem="{Binding Activity}">
+                <Picker.Items>
+                    <x:String>Rower</x:String>
+                    <x:String>Bieganie</x:String>
+                    <x:String>Basen</x:String>
+                    <x:String>Spacer</x:String>
+                    <x:String>Wysiłek siłowy</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry Placeholder="Czas trwania aktywności [m]" Keyboard="Numeric" Text="{Binding ActivityTime}" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Aktualizuj" Command="{Binding UpdateHistory}" />
+                <Button Text="Usuń" Command="{Binding DeleteHistory}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using KalkulatorKaloriiXamarin.Views;
+using KalkulatorKaloriiXamarin.Views.History;
+using KalkulatorKaloriiXamarin.Views.User;
+using System;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace KalkulatorKaloriiXamarin
@@ -9,11 +13,17 @@ namespace KalkulatorKaloriiXamarin
         public AppShell()
         {
             InitializeComponent();
-            RegisterRoutes();
+            //Routing.RegisterRoute(nameof(NewUserPage), typeof(NewUserPage));
+            Routing.RegisterRoute(nameof(HistoryMainPage), typeof(HistoryMainPage));
+            Routing.RegisterRoute(nameof(AddHistoryPage), typeof(AddHistoryPage));
             BindingContext = this;
         }
 
-        // Code below
+
+        private async void OnMenuItemClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//LoginPage");
+        }
 
     }
 }

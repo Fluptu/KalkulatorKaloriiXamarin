@@ -71,6 +71,8 @@ namespace KalkulatorKaloriiXamarin.ViewModels
                 var u = await App.db.SelectUsers();
                 foreach(var x in u)
                 {
+                    if (x.Username == null)
+                        continue;
                     Users.Add(x);
                 }
             }
@@ -82,7 +84,8 @@ namespace KalkulatorKaloriiXamarin.ViewModels
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             if(SelectedUser != null)
             {
-                await Shell.Current.GoToAsync($"//{nameof(HistoryMainPage)}");
+                Models.SelectedUser.SelectedUserID = SelectedUser.ID;
+                await Shell.Current.GoToAsync($"//HistoryMainPage");
             }
             else
             {
