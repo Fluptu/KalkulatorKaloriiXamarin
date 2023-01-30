@@ -12,5 +12,13 @@ namespace KalkulatorKaloriiXamarin.Views.History
             InitializeComponent();
             this.BindingContext = new ListHistoryViewModel();
         }
+
+        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            if (BindingContext is ListHistoryViewModel vm)
+            {
+                vm.LoadPage();
+            }
+        }
     }
 }

@@ -9,13 +9,25 @@
     <ContentPage.Content>
         <StackLayout Padding="10,20,10,0">
             <Button Text="Nowy wpis" Command="{Binding AddHistoryCommand}" />
-            <DatePicker Date="{Binding SelectedDate, Mode=TwoWay}">
+            
+            <DatePicker Date="{Binding SelectedDate, Mode=TwoWay}" DateSelected="DatePicker_DateSelected" HorizontalOptions="Center">
                 <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
             </DatePicker>
+
+            <StackLayout Margin="10,10,10,10" Orientation="Horizontal">
+                <Label Text="Zapotrzebowanie kalorii:" ></Label>
+                <Label Text="{Binding KcalGoal}" ></Label>
+            </StackLayout>
+
+            <StackLayout Margin="10,10,10,10" Orientation="Horizontal">
+                <Label Text="Zapotrzebowanie wody:" ></Label>
+                <Label Text="{Binding WaterGoal}" ></Label>
+            </StackLayout>
+
             <RefreshView x:DataType="local:ListHistoryViewModel" Command="{Binding LoadHistoriesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                 <CollectionView x:Name="ItemsListView"
                 ItemsSource="{Binding UserHistories}"
-                SelectionMode="None">
+                SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Padding="10" x:DataType="model:UserHistory">
@@ -28,6 +40,13 @@
                                     FontSize="16" />
                                     <Label Text="{Binding MealName}" 
                                     LineBreakMode="NoWrap" 
+                                    FontSize="16" />
+                                    <Label Text="{Binding WaterQty, StringFormat='{0} ml'}" 
+                                    HorizontalOptions="EndAndExpand"
+                                    FontSize="16" />
+                                    <Label Text="{Binding MealKcal, StringFormat='{0} Kcal'}" 
+                                    LineBreakMode="NoWrap" 
+                                    HorizontalOptions="EndAndExpand"
                                     FontSize="16" />
                                 </StackLayout>
                                     

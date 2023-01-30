@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KalkulatorKaloriiXamarin.Views.History.AddHistoryPage"
+             Title="Nowy wpis"
              BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Content>
         <StackLayout Padding="10,20,10,20">
-            <Label Text="Nowy posiłek" />
+
             <DatePicker Date="{Binding Date, Mode=TwoWay}">
                 <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
             </DatePicker>
@@ -34,7 +35,7 @@
                 </Picker.Items>
             </Picker>
             <Entry Placeholder="Czas trwania aktywności" Keyboard="Numeric" Text="{Binding ActivityTime}" />
-            <Button Text="Zapisz" Command="{Binding SaveHistory}" />
+            <Button VerticalOptions="EndAndExpand" Margin="10,10,10,30" Text="Zapisz" Command="{Binding SaveHistory}" />
             
         </StackLayout>
     </ContentPage.Content>

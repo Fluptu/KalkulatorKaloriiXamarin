@@ -84,7 +84,7 @@ namespace KalkulatorKaloriiXamarin.ViewModels
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             if(SelectedUser != null)
             {
-                Models.SelectedUser.SelectedUserID = SelectedUser.ID;
+                Models.SelectedUser.SelectedUserType = SelectedUser;
                 await Shell.Current.GoToAsync($"//HistoryMainPage");
             }
             else

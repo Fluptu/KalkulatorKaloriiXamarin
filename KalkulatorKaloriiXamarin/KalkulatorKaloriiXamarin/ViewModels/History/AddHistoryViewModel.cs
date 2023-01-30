@@ -76,7 +76,7 @@ namespace KalkulatorKaloriiXamarin.ViewModels.History
 
         public AddHistoryViewModel()
         {
-            UserID = Models.SelectedUser.SelectedUserID;
+            UserID = Models.SelectedUser.SelectedUserType.ID;
             Date = DateTime.Today;
             SaveHistory = new Command(() => NewHistory());
         }
