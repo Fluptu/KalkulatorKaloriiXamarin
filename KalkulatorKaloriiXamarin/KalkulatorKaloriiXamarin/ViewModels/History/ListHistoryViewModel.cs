@@ -24,12 +24,33 @@ namespace KalkulatorKaloriiXamarin.ViewModels.History
             set => SetProperty(ref _userID, value);
         }
 
-        private string _mealname;
-        public string MealName
+        private int _kcalSum;
+        public int KcalSum
         {
-            get => _mealname;
-            set => SetProperty(ref _mealname, value);
+            get => _kcalSum;
+            set => SetProperty(ref _kcalSum, value);
         }
+
+        private int _waterSum;
+        public int WaterSum
+        {
+            get => _waterSum;
+            set => SetProperty(ref _waterSum, value);
+        }
+
+        private string _water;
+        public string WaterGoal
+        {
+            get => _water;
+            set => SetProperty(ref _water, value);
+        }
+        private string _mealkcal;
+        public string KcalGoal
+        {
+            get => _mealkcal;
+            set => SetProperty(ref _mealkcal, value);
+        }
+
         public Command<Models.UserHistory> ItemTapped { get; }
         public INavigation Navigation { get; set; }
 
@@ -50,24 +71,34 @@ namespace KalkulatorKaloriiXamarin.ViewModels.History
         public ListHistoryViewModel()
         {
             SelectedDate = DateTime.Today;
-            UserID = Models.SelectedUser.SelectedUserID;
+            UserID = Models.SelectedUser.SelectedUserType.ID;
             UserHistories = new ObservableCollection<Models.UserHistory>();
             LoadHistoriesCommand = new Command(async () => await ExecuteLoadHistoriesCommand());
             AddHistoryCommand = new Command(HistoryAdd);
             ItemTapped = new Command<Models.UserHistory>(HistorySelected);
         }
 
-        async Task ExecuteLoadHistoriesCommand()
+        public async void LoadPage()
+        {
+            await ExecuteLoadHistoriesCommand();
+        }
+
+        private async Task ExecuteLoadHistoriesCommand()
         {
             IsBusy = true;
             string date = SelectedDate.ToString("dd/MM/yyyy");
+            KcalSum = 0;
+            WaterSum = 0;
             UserHistories.Clear();
             var items = await App.db.SelectHistoryForDate(UserID, date);
             foreach (var item in items)
             {
                 UserHistories.Add(item);
+                KcalSum += int.Parse(item.MealKcal);
+                WaterSum += int.Parse(item.WaterQty);
             }
-
+            KcalGoal = $"{KcalSum}/{Models.SelectedUser.SelectedUserType.KcalPerDay} Kcal";
+            WaterGoal = $"{WaterSum}/{Models.SelectedUser.SelectedUserType.WaterPerDay} ml";
             IsBusy = false;
         }
 
